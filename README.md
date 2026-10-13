@@ -2,6 +2,8 @@
 
 A stdlib-only ledger for slow-query logs: normalizes SQL into fingerprints (literals -> `?`), aggregates frequency x duration matrices (count, avg, p50, p95, max), and flags regressions against a baseline. If your slow-query log is a 2 GB file nobody reads, use this; otherwise skip it.
 
+<p align="center"><img src="docs/demo.gif" alt="demo" width="720"></p>
+
 ## Problem
 
 Slow-query logs repeat the same ten bad queries ten thousand ways — every bind value produces a distinct line, so `sort | uniq` tells you nothing, and "this query got slower last week" is unverifiable without a stored baseline. Teams need fingerprint-level aggregation plus a mechanical regression check they can run offline in CI.
